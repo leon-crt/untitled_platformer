@@ -16,9 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://d4aucu4cupuou" path="res://assets/player/adventurer-jump-03.png" id="11_2gmml"]
 [ext_resource type="Texture2D" uid="uid://bm5nirb0rfqdp" path="res://assets/player/adventurer-run-05.png" id="11_4wuud"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dgsy"]
-radius = 7.95659
-height = 27.9189
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_164tl"]
+size = Vector2(15.3333, 26.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5osnq"]
 animations = [{
@@ -57,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_2gmml")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -90,12 +89,12 @@ position = Vector2(572, 574)
 scale = Vector2(4, 4)
 script = ExtResource("1_d1irl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.75)
+[node name="grounded_hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 4)
 scale = Vector2(0.75, 1)
-shape = SubResource("CapsuleShape2D_1dgsy")
+shape = SubResource("RectangleShape2D_164tl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5osnq")
-animation = &"jump"
+animation = &"idle"
 metadata/_edit_lock_ = true

@@ -1,20 +1,18 @@
 extends CharacterBody2D
 
-@export var run_speed = 400
-@export var jump_force = -400
+@export var run_speed = 450
+@export var jump_force = -600
 @export var gravity = 1200
 
 var screen_size
 var is_grounded = true
 var jumping = false
 
-# Nodes
-var sprite # --> AnimatedSprite2D
+@onready var sprite = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	sprite = $AnimatedSprite2D
 
 func get_input():
 	velocity.x = 0
