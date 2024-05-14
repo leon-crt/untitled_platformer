@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var gravity = 1200
 
 var screen_size
-var is_grounded = true
 var jumping = false
 
 @onready var sprite = $AnimatedSprite2D
@@ -32,11 +31,11 @@ func anim_handler():
 	match [velocity.x, velocity.y]:
 		[var x, _] when x * sprite.scale.x < 0:
 			sprite.scale.x *= -1
-		[var x, var y] when x != 0 and !jumping:
+		[var x, var y] when x != 0 and is_on_floor():
 			sprite.play("run")
 		[_, var y] when y < 0 and jumping:
 			sprite.play("jump")
-		[_, var y] when y >= 0 and jumping:
+		[_, var y] when y >= 0 and !is_on_floor():
 			sprite.play("fall")
 		_:
 			sprite.play("idle")

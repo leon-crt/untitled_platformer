@@ -1,4 +1,5 @@
 res://player.tscn
 res://platform_tset.tres
-res://player.gd
 res://world.tscn
+res://player.gd
+res://parallax.tscn

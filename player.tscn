@@ -85,9 +85,10 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
-position = Vector2(572, 574)
+position = Vector2(557, 577)
 scale = Vector2(4, 4)
 script = ExtResource("1_d1irl")
+metadata/_edit_group_ = true
 
 [node name="grounded_hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 4)
@@ -98,3 +99,7 @@ shape = SubResource("RectangleShape2D_164tl")
 sprite_frames = SubResource("SpriteFrames_5osnq")
 animation = &"idle"
 metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+editor_draw_limits = true
+editor_draw_drag_margin = true
