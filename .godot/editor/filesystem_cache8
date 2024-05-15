@@ -1,10 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1715692867
+::res://::1715783702
 icon.svg::CompressedTexture2D::7997757228179901979::1713020939::1713020950::1::::<><>::
-platform_tset.tres::TileSet::8665315371760784321::1715609263::0::1::::<><>::uid://cwvfts1o0lrcx::::res://assets/level/tileset.png
-player.gd::GDScript::-1::1715615517::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::84424189057650692::1715620530::0::1::::<><>::res://player.gd<>uid://darr8wg3mux8x::::res://assets/player/adventurer-idle-00.png<>uid://bjnruxt1i20o6::::res://assets/player/adventurer-idle-01.png<>uid://d11ynqr48s72i::::res://assets/player/adventurer-fall-00.png<>uid://ba3vmnqig0gyk::::res://assets/player/adventurer-idle-02.png<>uid://b4wclos4o8h25::::res://assets/player/adventurer-fall-01.png<>uid://c0lyhl0i2sgjs::::res://assets/player/adventurer-idle-03.png<>uid://cdcnjq22kicf8::::res://assets/player/adventurer-run-00.png<>uid://cr0jdxdts40bv::::res://assets/player/adventurer-run-01.png<>uid://ccp6gxoh6jnu7::::res://assets/player/adventurer-run-02.png<>uid://bwrcjaxek3clt::::res://assets/player/adventurer-run-03.png<>uid://bmoio5xp67ujo::::res://assets/player/adventurer-run-04.png<>uid://bjgyong2f2e1q::::res://assets/player/adventurer-jump-02.png<>uid://d4aucu4cupuou::::res://assets/player/adventurer-jump-03.png<>uid://bm5nirb0rfqdp::::res://assets/player/adventurer-run-05.png
-world.tscn::PackedScene::465309157297150266::1715620569::0::1::::<><>::uid://dvpsqi0nbsmar::::res://platform_tset.tres<>uid://bg5po5lyuiv1::::res://player.tscn
+parallax.tscn::PackedScene::2039979869324599220::1715704119::0::1::::<><>::
+platform_tset.tres::TileSet::8665315371760784321::1715698283::0::1::::<><>::uid://cwvfts1o0lrcx::::res://assets/level/tileset.png
+player.gd::GDScript::-1::1715695578::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::84424189057650692::1715704119::0::1::::<><>::res://player.gd<>uid://darr8wg3mux8x::::res://assets/player/adventurer-idle-00.png<>uid://bjnruxt1i20o6::::res://assets/player/adventurer-idle-01.png<>uid://d11ynqr48s72i::::res://assets/player/adventurer-fall-00.png<>uid://ba3vmnqig0gyk::::res://assets/player/adventurer-idle-02.png<>uid://b4wclos4o8h25::::res://assets/player/adventurer-fall-01.png<>uid://c0lyhl0i2sgjs::::res://assets/player/adventurer-idle-03.png<>uid://cdcnjq22kicf8::::res://assets/player/adventurer-run-00.png<>uid://cr0jdxdts40bv::::res://assets/player/adventurer-run-01.png<>uid://ccp6gxoh6jnu7::::res://assets/player/adventurer-run-02.png<>uid://bwrcjaxek3clt::::res://assets/player/adventurer-run-03.png<>uid://bmoio5xp67ujo::::res://assets/player/adventurer-run-04.png<>uid://bjgyong2f2e1q::::res://assets/player/adventurer-jump-02.png<>uid://d4aucu4cupuou::::res://assets/player/adventurer-jump-03.png<>uid://bm5nirb0rfqdp::::res://assets/player/adventurer-run-05.png
+world.tscn::PackedScene::465309157297150266::1715704272::0::1::::<><>::uid://4cgf18rv8e01::::res://parallax.tscn<>uid://dvpsqi0nbsmar::::res://platform_tset.tres<>uid://bg5po5lyuiv1::::res://player.tscn
 ::res://assets/::1713197707
 ::res://assets/level/::1713197707
 background_0.png::CompressedTexture2D::371148793544028037::1713197314::1713197707::1::::<><>::
