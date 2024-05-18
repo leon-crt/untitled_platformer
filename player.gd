@@ -17,14 +17,12 @@ var jumping = false
 
 func adjust_horizontal_speed():
 	match velocity.x:
-		var x when (velocity.x > 0 and velocity.x < 10) or (velocity.x < 0 and velocity.x > -10):
-			velocity.x = 0
 		var x when x > MAX_SPEED_X:
 			velocity.x = MAX_SPEED_X
 		var x when velocity.x < MAX_SPEED_X * -1:
 			velocity.x = MAX_SPEED_X * -1
 
-func get_input():	
+func get_input():
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
@@ -71,9 +69,13 @@ func _process(delta):
 	# apply ground friction
 	if velocity.x > 0 and !jumping:
 		velocity.x -= ground_friction * delta
+		if velocity.x < 0:
+			velocity.x = 0
 	elif velocity.x < 0 and !jumping:
 		velocity.x += ground_friction * delta
-	# approximate velocity so that character doesn't spaz out or go over max speed
+		if velocity.x > 0:
+			velocity.x = 0
+	# approximate velocity so that character doesn't go over max speed
 	adjust_horizontal_speed()
 	# handle animations
 	anim_handler()
