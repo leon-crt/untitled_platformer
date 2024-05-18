@@ -1,28 +1,30 @@
 extends CharacterBody2D
 
-@export var run_speed = 450
-@export var air_speed_coefficient = 0.1
-@export var ground_friction = 1500
-@export var jump_force = -600
+@export var run_acceleration = 60
+@export var air_speed_coefficient = 0.5
+@export var ground_friction = 2000
+@export var jump_force = -1000
 @export var slide_boost = 200
-@export var gravity = 1200
-@export var MAX_SPEED_X = 500
+@export var gravity = 4000
+@export var gravity_decay = 0.5
+@export var MAX_SPEED_X = 600
 @export var MAX_SPEED_Y = 1000
-
-var jumping = false
 
 @onready var sprite = $AnimatedSprite2D
 @onready var screen_size = get_viewport_rect().size
 
-func get_input():
+var jumping = false
+
+func adjust_horizontal_speed():
 	match velocity.x:
-		var x when (x > 0 and x < 1) or (x < 0 and x > -1):
+		var x when (velocity.x > 0 and velocity.x < 10) or (velocity.x < 0 and velocity.x > -10):
 			velocity.x = 0
 		var x when x > MAX_SPEED_X:
 			velocity.x = MAX_SPEED_X
 		var x when velocity.x < MAX_SPEED_X * -1:
 			velocity.x = MAX_SPEED_X * -1
-	
+
+func get_input():	
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
@@ -30,18 +32,18 @@ func get_input():
 	if jump and is_on_floor():
 		jumping = true
 		velocity.y = jump_force
-	# moving right while jumping (not falling)
-	if right and jumping:
-		velocity.x += run_speed * air_speed_coefficient
+	# moving right while in the air
+	if right and !is_on_floor():
+		velocity.x += run_acceleration * air_speed_coefficient
 	# moving right while running
 	elif right:
-		velocity.x += run_speed
-	# moving left while jumping
-	if left and jumping:
-		velocity.x -= run_speed * air_speed_coefficient 
+		velocity.x += run_acceleration
+	# moving left while in the air
+	if left and !is_on_floor():
+		velocity.x -= run_acceleration * air_speed_coefficient 
 	# moving left while running
 	elif left:
-		velocity.x -= run_speed
+		velocity.x -= run_acceleration
 
 func anim_handler():
 	match [velocity.x, velocity.y]:
@@ -61,11 +63,19 @@ func _process(delta):
 	if jumping and is_on_floor():
 		jumping = false
 	get_input()
-	velocity.y += gravity*delta
+	# apply gravity (super jumping makes gravity less intense when going up)
+	if Input.is_action_pressed("jump") and jumping and velocity.y < 0:
+		velocity.y += (gravity*gravity_decay)*delta
+	else:
+		velocity.y += gravity*delta
+	# apply ground friction
 	if velocity.x > 0 and !jumping:
 		velocity.x -= ground_friction * delta
 	elif velocity.x < 0 and !jumping:
 		velocity.x += ground_friction * delta
+	# approximate velocity so that character doesn't spaz out or go over max speed
+	adjust_horizontal_speed()
+	# handle animations
 	anim_handler()
 	
 	move_and_slide()

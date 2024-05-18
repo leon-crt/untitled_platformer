@@ -16,5 +16,3 @@ layer_0/tile_data = PackedInt32Array(655360, 0, 9, 655361, 0, 9, 655362, 0, 9, 6
 
 [node name="player" parent="." instance=ExtResource("2_jnkpf")]
 position = Vector2(179, 504)
-jump_force = -1300
-gravity = 4000
