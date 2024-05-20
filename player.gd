@@ -26,6 +26,7 @@ func get_input():
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
+	var crouch = Input.is_action_just_pressed("slide")
 	
 	if jump and is_on_floor():
 		jumping = true

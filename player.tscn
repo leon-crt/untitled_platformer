@@ -1,12 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bg5po5lyuiv1"]
+[gd_scene load_steps=23 format=3 uid="uid://bg5po5lyuiv1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_d1irl"]
 [ext_resource type="Texture2D" uid="uid://darr8wg3mux8x" path="res://assets/player/adventurer-idle-00.png" id="1_lp4xx"]
 [ext_resource type="Texture2D" uid="uid://bjnruxt1i20o6" path="res://assets/player/adventurer-idle-01.png" id="2_30r4p"]
 [ext_resource type="Texture2D" uid="uid://d11ynqr48s72i" path="res://assets/player/adventurer-fall-00.png" id="2_cw3ka"]
+[ext_resource type="Texture2D" uid="uid://dwmjl7twblx22" path="res://assets/player/adventurer-crouch-00.png" id="2_daqlm"]
 [ext_resource type="Texture2D" uid="uid://ba3vmnqig0gyk" path="res://assets/player/adventurer-idle-02.png" id="3_2f8yo"]
+[ext_resource type="Texture2D" uid="uid://bi81qjepgk4a7" path="res://assets/player/adventurer-crouch-01.png" id="3_17x1o"]
 [ext_resource type="Texture2D" uid="uid://b4wclos4o8h25" path="res://assets/player/adventurer-fall-01.png" id="3_s8e31"]
+[ext_resource type="Texture2D" uid="uid://colkb8tg4lmeg" path="res://assets/player/adventurer-crouch-02.png" id="4_s1517"]
 [ext_resource type="Texture2D" uid="uid://c0lyhl0i2sgjs" path="res://assets/player/adventurer-idle-03.png" id="4_tbph4"]
+[ext_resource type="Texture2D" uid="uid://y1p5eo7v8ib4" path="res://assets/player/adventurer-crouch-03.png" id="5_h6psy"]
 [ext_resource type="Texture2D" uid="uid://cdcnjq22kicf8" path="res://assets/player/adventurer-run-00.png" id="6_dsd4f"]
 [ext_resource type="Texture2D" uid="uid://cr0jdxdts40bv" path="res://assets/player/adventurer-run-01.png" id="7_ogbki"]
 [ext_resource type="Texture2D" uid="uid://ccp6gxoh6jnu7" path="res://assets/player/adventurer-run-02.png" id="8_4b0u1"]
@@ -15,12 +19,30 @@
 [ext_resource type="Texture2D" uid="uid://bjgyong2f2e1q" path="res://assets/player/adventurer-jump-02.png" id="10_ppfmy"]
 [ext_resource type="Texture2D" uid="uid://d4aucu4cupuou" path="res://assets/player/adventurer-jump-03.png" id="11_2gmml"]
 [ext_resource type="Texture2D" uid="uid://bm5nirb0rfqdp" path="res://assets/player/adventurer-run-05.png" id="11_4wuud"]
+[ext_resource type="Script" path="res://player_state_machine.gd" id="20_sookr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_164tl"]
 size = Vector2(15.3333, 26.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5osnq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_daqlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_17x1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s1517")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h6psy")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_cw3ka")
@@ -97,9 +119,12 @@ shape = SubResource("RectangleShape2D_164tl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5osnq")
-animation = &"idle"
+animation = &"crouch"
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="state_machine" type="Node" parent="."]
+script = ExtResource("20_sookr")
