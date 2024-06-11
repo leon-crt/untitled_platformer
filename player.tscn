@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bg5po5lyuiv1"]
+[gd_scene load_steps=24 format=3 uid="uid://bg5po5lyuiv1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_d1irl"]
 [ext_resource type="Texture2D" uid="uid://darr8wg3mux8x" path="res://assets/player/adventurer-idle-00.png" id="1_lp4xx"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://d4aucu4cupuou" path="res://assets/player/adventurer-jump-03.png" id="11_2gmml"]
 [ext_resource type="Texture2D" uid="uid://bm5nirb0rfqdp" path="res://assets/player/adventurer-run-05.png" id="11_4wuud"]
 [ext_resource type="Script" path="res://player_state_machine.gd" id="20_sookr"]
+[ext_resource type="Script" path="res://idle.gd" id="21_pobva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_164tl"]
 size = Vector2(15.3333, 26.5)
@@ -128,3 +129,14 @@ editor_draw_drag_margin = true
 
 [node name="state_machine" type="Node" parent="."]
 script = ExtResource("20_sookr")
+
+[node name="idle" type="Node" parent="state_machine"]
+script = ExtResource("21_pobva")
+
+[node name="running" type="Node" parent="state_machine"]
+
+[node name="jumping" type="Node" parent="state_machine"]
+
+[node name="falling" type="Node" parent="state_machine"]
+
+[node name="sliding" type="Node" parent="state_machine"]

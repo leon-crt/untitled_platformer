@@ -39,7 +39,7 @@ func get_input():
 		velocity.x += run_acceleration
 	# moving left while in the air
 	if left and !is_on_floor():
-		velocity.x -= run_acceleration * air_speed_coefficient 
+		velocity.x -= run_acceleration * air_speed_coefficient
 	# moving left while running
 	elif left:
 		velocity.x -= run_acceleration
