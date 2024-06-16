@@ -1,6 +1,4 @@
 res://player.tscn
 res://platform_tset.tres
-res://idle.gd
 res://player_state_machine.gd
-res://world.tscn
-res://player.gd
+res://idle.gd

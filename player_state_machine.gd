@@ -3,6 +3,10 @@ extends Node
 var current_state : State
 var states : Dictionary = {}
 
+@export var initial_state : State
+
+@onready var player = $player
+
 func _ready():
 	for child in get_children():
 		if child is State:
