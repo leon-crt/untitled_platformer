@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bg5po5lyuiv1"]
+[gd_scene load_steps=28 format=3 uid="uid://bg5po5lyuiv1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_d1irl"]
 [ext_resource type="Texture2D" uid="uid://darr8wg3mux8x" path="res://assets/player/adventurer-idle-00.png" id="1_lp4xx"]
@@ -20,7 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://d4aucu4cupuou" path="res://assets/player/adventurer-jump-03.png" id="11_2gmml"]
 [ext_resource type="Texture2D" uid="uid://bm5nirb0rfqdp" path="res://assets/player/adventurer-run-05.png" id="11_4wuud"]
 [ext_resource type="Script" path="res://player_state_machine.gd" id="20_sookr"]
+[ext_resource type="Texture2D" uid="uid://dq4epfr77eoq5" path="res://assets/player/adventurer-slide-00.png" id="20_w3ckn"]
+[ext_resource type="Texture2D" uid="uid://c81rxhy3madnb" path="res://assets/player/adventurer-slide-01.png" id="21_f8bgs"]
 [ext_resource type="Script" path="res://idle.gd" id="21_pobva"]
+[ext_resource type="Script" path="res://jumping.gd" id="24_r4622"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_164tl"]
 size = Vector2(15.3333, 26.5)
@@ -105,13 +108,26 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_w3ckn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f8bgs")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df2gc"]
+size = Vector2(23.75, 13)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(557, 577)
 scale = Vector2(4, 4)
 script = ExtResource("1_d1irl")
-metadata/_edit_group_ = true
 
 [node name="grounded_hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 4)
@@ -120,7 +136,7 @@ shape = SubResource("RectangleShape2D_164tl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5osnq")
-animation = &"crouch"
+animation = &"jump"
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -136,7 +152,15 @@ script = ExtResource("21_pobva")
 [node name="running" type="Node" parent="state_machine"]
 
 [node name="jumping" type="Node" parent="state_machine"]
+script = ExtResource("24_r4622")
 
 [node name="falling" type="Node" parent="state_machine"]
 
 [node name="sliding" type="Node" parent="state_machine"]
+
+[node name="crouching" type="Node" parent="state_machine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.625, 11)
+shape = SubResource("RectangleShape2D_df2gc")
+disabled = true

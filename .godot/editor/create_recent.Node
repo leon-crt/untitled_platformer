@@ -1,11 +1,11 @@
 Node
+CollisionShape2D
 Node2D
 Sprite2D
 ParallaxLayer
 ParallaxBackground
 Camera2D
 CharacterBody2D
-CollisionShape2D
 TileMap
 AnimatedSprite2D
 Area2D
