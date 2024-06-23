@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bg5po5lyuiv1"]
+[gd_scene load_steps=32 format=3 uid="uid://bg5po5lyuiv1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_d1irl"]
 [ext_resource type="Texture2D" uid="uid://darr8wg3mux8x" path="res://assets/player/adventurer-idle-00.png" id="1_lp4xx"]
@@ -23,7 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://dq4epfr77eoq5" path="res://assets/player/adventurer-slide-00.png" id="20_w3ckn"]
 [ext_resource type="Texture2D" uid="uid://c81rxhy3madnb" path="res://assets/player/adventurer-slide-01.png" id="21_f8bgs"]
 [ext_resource type="Script" path="res://idle.gd" id="21_pobva"]
+[ext_resource type="Script" path="res://running.gd" id="24_jomph"]
 [ext_resource type="Script" path="res://jumping.gd" id="24_r4622"]
+[ext_resource type="Script" path="res://falling.gd" id="25_t3h6c"]
+[ext_resource type="Script" path="res://crouching.gd" id="27_q6gra"]
+[ext_resource type="Script" path="res://sliding.gd" id="27_ytfnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_164tl"]
 size = Vector2(15.3333, 26.5)
@@ -129,14 +133,14 @@ position = Vector2(557, 577)
 scale = Vector2(4, 4)
 script = ExtResource("1_d1irl")
 
-[node name="grounded_hitbox" type="CollisionShape2D" parent="."]
+[node name="standing_hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 4)
 scale = Vector2(0.75, 1)
 shape = SubResource("RectangleShape2D_164tl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5osnq")
-animation = &"jump"
+animation = &"slide"
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -150,17 +154,21 @@ script = ExtResource("20_sookr")
 script = ExtResource("21_pobva")
 
 [node name="running" type="Node" parent="state_machine"]
+script = ExtResource("24_jomph")
 
 [node name="jumping" type="Node" parent="state_machine"]
 script = ExtResource("24_r4622")
 
 [node name="falling" type="Node" parent="state_machine"]
+script = ExtResource("25_t3h6c")
 
 [node name="sliding" type="Node" parent="state_machine"]
+script = ExtResource("27_ytfnt")
 
 [node name="crouching" type="Node" parent="state_machine"]
+script = ExtResource("27_q6gra")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="crouching_hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(1.625, 11)
 shape = SubResource("RectangleShape2D_df2gc")
 disabled = true

@@ -18,6 +18,16 @@ signal Transitioned
 
 @onready var player : CharacterBody2D = $player
 
+func adjust_horizontal_speed():
+	match player.velocity.x:
+		var x when x > MAX_SPEED_X:
+			player.velocity.x = MAX_SPEED_X
+		var x when player.velocity.x < MAX_SPEED_X * -1:
+			player.velocity.x = MAX_SPEED_X * -1
+
+func handle_input(_delta: float):
+	pass
+
 func enter():
 	pass
 
@@ -25,8 +35,10 @@ func exit():
 	pass
 
 func update(_delta: float):
-	#handle_input()
-	pass
+	if player.velocity.x * sprite.scale.x < 0:
+			sprite.scale.x *= -1
 
 func physics_update(_delta: float):
+	handle_input(_delta)
+	adjust_horizontal_speed()
 	player.velocity.y += gravity*_delta
